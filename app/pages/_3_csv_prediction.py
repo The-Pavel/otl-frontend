@@ -16,8 +16,9 @@ def app():
         dataframe = pd.read_csv(uploaded_file)
         st.write(dataframe)
         json = dataframe.to_json()
-        url_post = 'https://otl-backend.herokuapp.com//uploadfile/'
+        url_post = 'https://otl-backend.herokuapp.com/uploadfile/'
         file = {"file": json}
         response = requests.post(url_post,files=file).json()
+        st.write(response)
         response_df = pd.read_json(response)
         st.write(response_df)
